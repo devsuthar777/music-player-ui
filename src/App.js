@@ -1,24 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useContext, useState } from 'react';
+import { MusicContext } from './context/musicContext';
+import spotLogo from './assets/Vector.png';
+import SideBar from './components/SideBar';
+import Player from './components/Player';
+const url = process.env.REACT_APP_SONGS_URL;
 function App() {
+
+  const {useMusic} = useContext(MusicContext);
+
+  const [loader,songList] = useMusic(url);
+
+  console.log(songList);
+  
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='w-full h-[895px] bg-gradient-to-r from-[#331E00] to-[#000000] 
+    flex justify-between relative
+    '>
+      <div className='absolute top-[32px] left-[32px]'><img src={spotLogo}></img></div>
+      <div className='absolute top-[40px] left-[280px]'>
+        {
+          loader ? <div className='loader'></div> 
+          : <SideBar/>
+        }
+      </div>
+      <div className='absolute top-[101px] left-[874px]'>
+        {
+          loader ? <div className='loader'></div> 
+          : <Player/>
+        }
+      </div>
     </div>
+    
   );
 }
 
