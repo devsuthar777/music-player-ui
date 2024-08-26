@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { MusicContext } from '../context/musicContext';
 import MusicController from './MusicController';
+import Seekbar from './Seekbar';
 const urlImgBase = process.env.REACT_APP_SONGS_COVER;
 
 const Player = () => {
@@ -15,7 +16,8 @@ const Player = () => {
       <div className='w-full h-[510px] rounded-md'>
        <img className='w-[480px] h-[480px] rounded-md' src={urlImgBase+currentSong.cover}>
        </img>
-       <div  className='mt-[16px] h-[6px] w-full bg-white bg-opacity-[20%] rounded-md'><div className='w-[50%] bg-white h-full rounded-md'></div></div>
+          <Seekbar/>
+       
        </div>
 
        <MusicController/>

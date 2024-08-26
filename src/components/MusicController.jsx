@@ -7,12 +7,14 @@ import { PiSpeakerHighFill } from "react-icons/pi";
 import { MusicContext } from '../context/musicContext';
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaPauseCircle } from "react-icons/fa";
+import { PiSpeakerSimpleXFill } from "react-icons/pi";
 
 const MusicController = () => { 
     const {currentSong,songList,setCurrSongIndex,currtSongIndex,isPlaying,setIsPlaying,musicInstance} = useContext(MusicContext);
-    const audioPlayer = useRef(null);
+
     
-    
+    const [isMute,setIsMute] = useState(false);
+    console.log("musicDuration",musicInstance.duration);
     const pausPlayHandler = () => {
         if (musicInstance) {
           if (isPlaying) {
@@ -46,6 +48,24 @@ const MusicController = () => {
 
     }
 
+    const muteChangeHandler = () =>
+    {
+        console.log("musicDuration",musicInstance.duration);
+        console.log("currentTime",musicInstance.currentTime);
+        if(isMute)
+        {
+            musicInstance.muted = false;
+            setIsMute(false);
+        }
+        else
+        {
+            musicInstance.muted = true;
+            setIsMute(true);
+            
+        }
+        
+    }
+
   return (
     <div className='w-full h-[51px] flex justify-between'>
     
@@ -57,15 +77,20 @@ const MusicController = () => {
         </div>
       </div>
       <div className='flex items-center justify-between w-[176px] '>
-        <img className='w-[32px] h-[32px]' src={leftArrow} onClick={leftHandler}></img>
+        <img className='w-[32px] h-[32px] cursor-pointer' src={leftArrow} onClick={leftHandler}></img>
         {
-            !isPlaying ?  <FaCirclePlay className='w-[48px] h-[48px] text-white'  onClick={pausPlayHandler}></FaCirclePlay>
-                      :  <FaPauseCircle className='w-[48px] h-[48px] text-white'  onClick={pausPlayHandler}></FaPauseCircle>
+            !isPlaying ?  <FaCirclePlay className='w-[48px] h-[48px] text-white cursor-pointer hover:shadow-sm'  onClick={pausPlayHandler}></FaCirclePlay>
+                      :  <FaPauseCircle className='w-[48px] h-[48px] text-white cursor-pointer hover:shadow-sm'  onClick={pausPlayHandler}></FaPauseCircle>
         }
         
-        <img className='w-[32px] h-[32px]' src={rightArrow} onClick={rightHandler}></img>
+        <img className='w-[32px] h-[32px] cursor-pointer' src={rightArrow} onClick={rightHandler}></img>
       </div>
-      <div className='w-[48px] h-[48px] rounded-full bg-white bg-opacity-20 flex items-center justify-center'><PiSpeakerHighFill className='text-white w-[20px] h-[16px]'/></div>
+      <div className='w-[48px] h-[48px] rounded-full bg-white bg-opacity-20 flex items-center justify-center cursor-pointer'>
+       {
+        !isMute ? <PiSpeakerHighFill className='text-white w-[20px] h-[16px]' onClick={muteChangeHandler}/>
+                : <PiSpeakerSimpleXFill className='text-white w-[20px] h-[16px]' onClick={muteChangeHandler}/>
+       } 
+      </div>
     </div>
   )
 }

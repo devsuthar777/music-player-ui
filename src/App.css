@@ -1,0 +1,36 @@
+  /* Style the slider track */
+  input[type="range"] {
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    width: 100%; /* Full width */
+    height: 8px; /* Track height */
+    background: #ddd; /* Track background color */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove outline */
+    opacity: 0; /* Semi-transparent */
+    -webkit-transition: .2s; /* Smooth transition for state changes */
+    transition: opacity .2s;
+    cursor: pointer;
+}
+
+
+
+/* Style the thumb/handle */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default thumb styling */
+    appearance: none;
+    width: 20px; /* Thumb width */
+    height: 20px; /* Thumb height */
+    background: #4CAF50; /* Thumb color */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 50%; /* Rounded thumb */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Slight shadow for 3D effect */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
