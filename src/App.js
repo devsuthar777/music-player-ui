@@ -22,15 +22,15 @@ function App() {
     '>
       <div className='absolute top-[32px] left-[32px]'><img src={spotLogo}></img></div>
       <div className='absolute top-[40px] left-[280px]'>
-        {
-          loader ? <div className='loader'></div> 
-          : <SideBar/>
-        }
+
+          
+           <SideBar loader={loader}/>
+        
       </div>
       <div className='absolute top-[101px] left-[874px]'>
         {
           loader ? <div className='loader'></div> 
-          : <Player/>
+          : <Player loader={loader}/>
         }
       </div>
     </div>

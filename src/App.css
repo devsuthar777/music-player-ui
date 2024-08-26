@@ -34,3 +34,18 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 50%;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
+
+@keyframes fade {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.5; 
+    }
+}
+
+
+.fade-animation {
+   
+    animation: fade 2s infinite; 
+}
