@@ -8,7 +8,7 @@ import Player from './components/Player';
 const url = process.env.REACT_APP_SONGS_URL;
 function App() {
 
-  const {useMusic} = useContext(MusicContext);
+  const {useMusic,currentSong} = useContext(MusicContext);
 
   const [loader,songList] = useMusic(url);
 
@@ -17,9 +17,11 @@ function App() {
   
 
   return (
-    <div className='w-full h-[895px] bg-gradient-to-r from-[#331E00] to-[#000000] 
-    flex justify-between relative
-    '>
+     <div className={`w-full h-[895px] bg-gradient-to-r from-[${currentSong?.accent ? currentSong?.accent : '#331E00' }] to-[#000000] 
+     flex justify-between relative
+    `}>
+
+    
       <div className='absolute top-[32px] left-[32px]'><img src={spotLogo}></img></div>
       <div className='absolute top-[40px] left-[280px]'>
 

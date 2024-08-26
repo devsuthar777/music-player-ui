@@ -51,7 +51,7 @@ const SideBar = ({loader}) => {
             )
             :
             songList.filter((song) => song?.name.toLowerCase().includes(searchKeyWord) || song?.artist.toLowerCase().includes(searchKeyWord) ).map((song,index) => 
-            !isTopTrack ? <SongCard song = {song} index={index}></SongCard> : (song.top_track ? <SongCard song = {song} index={index}></SongCard> : null )
+            !isTopTrack ? <SongCard song = {song} index={index} ></SongCard> : (song.top_track ? <SongCard song = {song} index={index}></SongCard> : null )
             )
           ) 
           :
