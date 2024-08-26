@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 const urlImgBase = process.env.REACT_APP_SONGS_COVER;
 
 const SongCard = ({song}) => {
+ 
+  const [audio,setAudio] = useState(new Audio(song.url));
+  const [duration,setDuration] = useState("00:00");
+  audio.addEventListener('loadedmetadata', function(){
+    setDuration(parseInt(audio.duration/60) +  ":"+ parseInt(audio.duration%60));
+  });
+
   return (
     <div className='w-[432px] py-[16px] h-[80px] text-white flex justify-between'>
         <div className='flex gap-[16px]'>
@@ -13,7 +20,7 @@ const SongCard = ({song}) => {
         
         </div>
         
-        <p className='text-[18px] opacity-[60%]'>5:24</p>
+        <p className='text-[18px] opacity-[60%]'>{ duration}</p>
         
     </div>
   )
