@@ -11,13 +11,16 @@ const MusicProvider = ({ children }) => {
     const [musicInstance,setMusicInstance]= useState(currentSong?.url ? new Audio(currentSong.url) : null);
     const [isPlaying,setIsPlaying] = useState(false);
 
+    const [playerLoad,setPlayerLoad]=useState(true);
+
     const useMusic = (url) => {
         useEffect(() => {
             fetch(url).then((response) => response.json())
         .then((data) => {setSongList(data.data); 
              console.log(data.data); 
              setCurrentSong(data.data[currtSongIndex] ); 
-             setMusicInstance( new Audio(data.data[currtSongIndex].url))   
+             setMusicInstance( new Audio(data.data[currtSongIndex].url))
+             setPlayerLoad(false);   
             })
         .catch((error) => { console.log("something wrong with fetching songs!",error)})
         .finally(()=> setLoader(false));
@@ -30,18 +33,23 @@ const MusicProvider = ({ children }) => {
 
     useEffect(()=>{
         setCurrentSong(songList ? songList[currtSongIndex] : null);
+        setPlayerLoad(true);
 
     },[currtSongIndex])
 
     useEffect(() => {
         setMusicInstance(currentSong?.url ? new Audio(currentSong.url) : null);
+        
     },[currentSong]);
 
     useEffect(()=> {
         if(musicInstance) 
             {
+                
                 musicInstance.play()
-                .then(function(){setIsPlaying(true);})
+                .then(function(){setIsPlaying(true);
+                    setPlayerLoad(false);
+                })
                 .catch((error)=>{
                     console.log(error)
                     setIsPlaying(false);
@@ -52,12 +60,14 @@ const MusicProvider = ({ children }) => {
 
             }
 
-        console.log("newMusicInstance",musicInstance);        
+        console.log("newMusicInstance",musicInstance);   
+        
+        
 
     },[musicInstance]);
 
     return (
-        <MusicContext.Provider value={{ loader,songList, useMusic, currentSong,setCurrentSong,setCurrSongIndex,currtSongIndex,musicInstance,isPlaying,setIsPlaying}}>
+        <MusicContext.Provider value={{ loader,songList, useMusic, currentSong,setCurrentSong,setCurrSongIndex,currtSongIndex,musicInstance,isPlaying,setIsPlaying,playerLoad,setPlayerLoad}}>
             {children}
         </MusicContext.Provider>
     );

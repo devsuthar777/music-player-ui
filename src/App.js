@@ -17,7 +17,7 @@ function App() {
   
 
   return (
-     <div className={`w-full h-[895px] bg-gradient-to-r from-[${currentSong?.accent ? currentSong?.accent : '#331E00' }] to-[#000000] 
+     <div className={`w-full h-[895px] bg-gradient-to-r from-[${currentSong?.accent ? currentSong?.accent : `#331E00` }] to-[#000000] 
      flex justify-between relative
     `}>
 
@@ -31,8 +31,7 @@ function App() {
       </div>
       <div className='absolute top-[101px] left-[874px]'>
         {
-          loader ? <div className='loader'></div> 
-          : <Player loader={loader}/>
+          <Player loader={loader}/>
         }
       </div>
     </div>
