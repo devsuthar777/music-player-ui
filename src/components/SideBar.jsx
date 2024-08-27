@@ -28,7 +28,7 @@ const SideBar = ({loader}) => {
   }
   
   return (
-    <div className='w-full h-full'>
+    <div id="sideBar" className='w-full h-full'>
       <div className='flex w-[258px] h-[32px] gap-[40px] font-inter
       text-[24px] leading-[32px] font-semibold
       '><button className={`text-[#FFFFFF] ${isTopTrack ? 'opacity-50' : 'opacity-100' }`} onClick={() => setIsTopTrack(false)}>For You</button> <button className={`text-[#FFFFFF] ${isTopTrack ? 'opacity-100' : 'opacity-50' }`} onClick={() => setIsTopTrack(true)}>Top Tracks</button></div>
