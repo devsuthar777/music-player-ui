@@ -17,9 +17,9 @@ function App() {
   
 
   return (
-     <div className={`w-full h-[895px] bg-gradient-to-r from-[${currentSong?.accent ? currentSong?.accent : `#331E00` }] to-[#000000] 
+     <div className={`w-full h-[895px]  
      flex justify-between relative
-    `}>
+    `} style={{backgroundImage: `linear-gradient(to right, ${currentSong?.accent ? currentSong?.accent : `#331E00`}, #000000)`}}>
 
     
       <div className='absolute top-[32px] left-[32px]'><img src={spotLogo}></img></div>
