@@ -48,7 +48,7 @@ function App() {
         <div className=' md:mt-[101px] mt-0 md:mr-12 md:ml-0 ml-2 mr-2 '>
           <Player loader={loader}/>
           
-            <div className='bg-none outline text-center text-white rounded-full py-3 opacity-65 mb-4 md:hidden visible' onClick={()  => setMenuShow(menu => !menu)}> Toggle Menu</div>
+            <a to={"#sideBar"} className='bg-none inline-block w-full outline text-center text-white rounded-full py-3 opacity-65 mb-4 md:hidden visible' onClick={()  => setMenuShow(menu => !menu)}> Toggle Menu</a>
           
         </div>
 
