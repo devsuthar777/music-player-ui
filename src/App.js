@@ -24,14 +24,7 @@ function App() {
     setMenuShow(true);
   }
 
-    window.addEventListener("resize", function (){
-      if (window.innerWidth <= 768) {
-        
-        setMenuShow(false);
-    } else {
-      setMenuShow(true); 
-    }
-    });
+   
    
 
   },[])
