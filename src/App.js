@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MusicContext } from './context/musicContext';
 import spotLogo from './assets/Vector.png';
 import SideBar from './components/SideBar';
@@ -12,28 +12,55 @@ function App() {
 
   const [loader,songList] = useMusic(url);
 
+  const [menuShow,setMenuShow]= useState(true);
+
   console.log(songList);
-  
+
+  useEffect(()=>{
+
+    if (window.innerWidth <= 768) {
+      setMenuShow(false);
+  } else {
+    setMenuShow(true);
+  }
+
+    window.addEventListener("resize", function (){
+      if (window.innerWidth <= 768) {
+        
+        setMenuShow(false);
+    } else {
+      setMenuShow(true); 
+    }
+    });
+   
+
+  },[])
   
 
   return (
-     <div className={`w-full h-[895px]  
-     flex justify-between relative
+     <div className={`w-full h-full min-h-screen  
+     flex xl:flex-row flex-col gap-0   lg:items-start  justify-around
     `} style={{backgroundImage: `linear-gradient(to right, ${currentSong?.accent ? currentSong?.accent : `#331E00`}, #000000)`}}>
 
     
-      <div className='absolute top-[32px] left-[32px]'><img src={spotLogo}></img></div>
-      <div className='absolute top-[40px] left-[280px]'>
+      <div className=' mt-2  md:mt-5 md:ml-3 mx-auto'><img src={spotLogo}></img>
+      </div>
 
+      <div className='flex lg:flex-row md:flex-col flex-col-reverse xl:gap-32 md:gap-14 gap-0   mx-auto  '>
+      
+        <div className={`mt-10 md:mr-12 md:ml-0 ml-2 mr-2   ${menuShow ? `visible` : `hidden`}`}>
+          <SideBar loader={loader}/>
           
-           <SideBar loader={loader}/>
-        
-      </div>
-      <div className='absolute top-[101px] left-[874px]'>
-        {
+        </div>
+        <div className=' md:mt-[101px] mt-0 md:mr-12 md:ml-0 ml-2 mr-2 '>
           <Player loader={loader}/>
-        }
+          
+            <div className='bg-none outline text-center text-white rounded-full py-3 opacity-65 mb-4 md:hidden visible' onClick={()  => setMenuShow(menu => !menu)}> Toggle Menu</div>
+          
+        </div>
+
       </div>
+
     </div>
     
   );

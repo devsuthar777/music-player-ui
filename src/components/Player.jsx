@@ -10,7 +10,7 @@ const Player = () => {
   console.log("currsentsong",currentSong);
   return (
     
-    <div className='w-[480px] h-[692px] flex flex-col gap-[24px]'>
+    <div className='md:w-[480px] w-full h-[692px] flex flex-col   gap-[24px]'>
     {
       playerLoad ? <SimmerUIPlayer/> : (<>
       <div className='w-[193px] h-[68px] flex flex-col gap-[8px]'>

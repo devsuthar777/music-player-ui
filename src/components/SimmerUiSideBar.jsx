@@ -3,7 +3,7 @@ import React from 'react'
 const SimmerUiSideBar = () => {
   return (
     <div className='simmerSideBar'>
-        <div className='w-[432px] py-[16px] h-[80px] text-white flex justify-between'>
+        <div className='xl:w-[432px] w-full py-[16px] h-[80px] text-white flex justify-between'>
         <div className='flex gap-[16px]'>
             <div className='w-[48px] h-[48px] rounded-full bg-white fade-animation'  ></div>
             <div className=''>
@@ -17,7 +17,7 @@ const SimmerUiSideBar = () => {
         
     </div>
 
-    <div className='w-[432px] py-[16px] h-[80px] text-white flex justify-between'>
+    <div className='xl:w-[432px] w-full  py-[16px] h-[80px] text-white flex justify-between'>
         <div className='flex gap-[16px]'>
             <div className='w-[48px] h-[48px] rounded-full bg-white fade-animation'  ></div>
             <div className=''>

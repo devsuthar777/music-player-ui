@@ -22,7 +22,7 @@ const SongCard = ({song,index}) => {
   }
 
   return (
-    <div className='w-[432px] py-[16px] h-[80px] text-white flex justify-between group cursor-pointer' onClick={perticularSongClick}>
+    <div className='xl:w-[432px] w-full py-[16px] h-[80px] text-white flex justify-between group cursor-pointer' onClick={perticularSongClick}>
         <div className='flex gap-[16px]'>
             <img className='w-[48px] h-[48px] rounded-full group-hover:scale-110 group-hover:border transition-all duration-100' src={urlImgBase+song.cover} loading='lazy' ></img>
             <div className=''>

@@ -67,7 +67,7 @@ const MusicController = () => {
     }
 
   return (
-    <div className='w-full h-[51px] flex justify-between'>
+    <div className='w-full h-[51px] flex justify-between transition-all duration-100'>
     
       <div className='w-[48px] h-[48px]'>
         <div className='w-full h-full rounded-full bg-white bg-opacity-15 gap-1 flex justify-center items-center'>
@@ -77,18 +77,18 @@ const MusicController = () => {
         </div>
       </div>
       <div className='flex items-center justify-between w-[176px] '>
-        <img className='w-[32px] h-[32px] cursor-pointer' src={leftArrow} onClick={leftHandler}></img>
+        <img className='w-[32px] h-[32px] cursor-pointer hover:scale-110 transition-all duration-100' src={leftArrow} onClick={leftHandler}></img>
         {
-            !isPlaying ?  <FaCirclePlay className='w-[48px] h-[48px] text-white cursor-pointer hover:shadow-sm'  onClick={pausPlayHandler}></FaCirclePlay>
-                      :  <FaPauseCircle className='w-[48px] h-[48px] text-white cursor-pointer hover:shadow-sm'  onClick={pausPlayHandler}></FaPauseCircle>
+            !isPlaying ?  <FaCirclePlay className='w-[48px] h-[48px] text-white cursor-pointer hover:shadow-sm hover:scale-110'  onClick={pausPlayHandler}></FaCirclePlay>
+                      :  <FaPauseCircle className='w-[48px] h-[48px] text-white cursor-pointer hover:shadow-sm hover:scale-110'  onClick={pausPlayHandler}></FaPauseCircle>
         }
         
-        <img className='w-[32px] h-[32px] cursor-pointer' src={rightArrow} onClick={rightHandler}></img>
+        <img className='w-[32px] h-[32px] cursor-pointer hover:scale-110' src={rightArrow} onClick={rightHandler}></img>
       </div>
       <div className='w-[48px] h-[48px] rounded-full bg-white bg-opacity-20 flex items-center justify-center cursor-pointer'>
        {
-        !isMute ? <PiSpeakerHighFill className='text-white w-[20px] h-[16px]' onClick={muteChangeHandler}/>
-                : <PiSpeakerSimpleXFill className='text-white w-[20px] h-[16px]' onClick={muteChangeHandler}/>
+        !isMute ? <PiSpeakerHighFill className='text-white w-[20px] h-[16px] hover:scale-110' onClick={muteChangeHandler}/>
+                : <PiSpeakerSimpleXFill className='text-white w-[20px] h-[16px] hover:scale-110' onClick={muteChangeHandler}/>
        } 
       </div>
     </div>
